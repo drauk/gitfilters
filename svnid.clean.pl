@@ -8,7 +8,7 @@
 # Example input:
 # $Id: gitfilters/README 79b816d 2017-09-16 10:03:55Z Alan U. Kennington $
 
-# "sed -r" or "sed --regexp-extended" uses extended regular expressions.
+# "sed -r" uses extended regular expressions.
 my $cmd = "sed -r 's/\\\$Id: .*[0-9]{2}:[0-9]{2}:[0-9]{2}Z .* \\\$/\$Id\$/g'";
 # print "cmd = \"$cmd\"\n";
 

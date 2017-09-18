@@ -59,10 +59,7 @@ sub localtime2utc {
     my @mdays = (
         31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31
         );
-    # my @mdays_leap = (
-    #     31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31
-    #     );
-    # Correction for leap years. Assume positive year!
+    # Make the correction for leap years. Assume Gregorian calendar.
     my $leap = 0;
     if (($yr % 4) == 0) {
         $leap = 1;
@@ -144,13 +141,9 @@ my $cmd_h = "git log --pretty=format:\"%h\" -1 -- $f";
 my $cmd_ai = "git log --pretty=format:\"%ai\" -1 -- $f";
 my $cmd_an = "git log --pretty=format:\"%an\" -1 -- $f";
 
-# print "cmd = \"$cmd\"\n";
-
 my $x_h = `$cmd_h`;
 my $x_ai = `$cmd_ai`;
 my $x_an = `$cmd_an`;
-
-# print "x = \"$x\"\n";
 
 # Use the tail of the path because "/" is forbidden in "s///".
 # my @names = split /\//, $f;
@@ -163,11 +156,6 @@ my $z = $f;
 $z =~ s/\//\\\//g;
 $z =~ s/\$/\\\$/g;
 # print "z = \"$z\"\n";
-
-# $z2 = "$z\$$z";
-# print "z2 = \"$z2\"\n";
-# $z2 =~ s/\$/\\\$/g;
-# print "z2 = \"$z2\"\n";
 
 #------------------------------------------------------------------------------
 # Convert the timestamp from Git to Subversion style.
